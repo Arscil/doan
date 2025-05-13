@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng quan - GREEN CITY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="Logo">
+                    <h3>GREEN CITY</h3>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item active">
+                    <a href="dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Tổng quan</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="employee.html">
+                        <i class="fas fa-users"></i>
+                        <span>Quản lý nhân viên</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="routes.html">
+                        <i class="fas fa-route"></i>
+                        <span>Quản lý tuyến thu gom</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="schedule.html">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Lịch thu gom</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="assignments.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Phân công công việc</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="reports.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Báo cáo thống kê</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="settings.html">
+                        <i class="fas fa-cog"></i>
+                        <span>Cài đặt hệ thống</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container-fluid">
+                <!-- Header -->
+                <div class="content-header d-flex justify-content-between align-items-center">
+                    <h1>TỔNG QUAN HỆ THỐNG</h1>
+                    <div class="user-info">
+                        <span>Admin</span>
+                        <a href="../login.html" class="btn btn-outline-light ms-3">Đăng xuất</a>
+                    </div>
+                </div>
+
+                <!-- Thống kê nhanh -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title text-muted mb-3">Tổng số nhân viên</h6>
+                                <h3 class="mb-0">45</h3>
+                                <small class="text-success">
+                                    <i class="fas fa-user-plus me-1"></i>2 nhân viên mới
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title text-muted mb-3">Tuyến thu gom</h6>
+                                <h3 class="mb-0">12</h3>
+                                <small class="text-info">
+                                    <i class="fas fa-route me-1"></i>Đang hoạt động
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title text-muted mb-3">Phương tiện</h6>
+                                <h3 class="mb-0">15</h3>
+                                <small class="text-warning">
+                                    <i class="fas fa-truck me-1"></i>2 đang bảo trì
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title text-muted mb-3">Công việc hôm nay</h6>
+                                <h3 class="mb-0">8</h3>
+                                <small class="text-success">
+                                    <i class="fas fa-check-circle me-1"></i>5 đã hoàn thành
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biểu đồ hoạt động -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Hoạt động thu gom theo tuần</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="weeklyActivityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Trạng thái nhân viên</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="employeeStatusChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hoạt động gần đây -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Hoạt động gần đây</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Thời gian</th>
+                                        <th>Hoạt động</th>
+                                        <th>Nhân viên</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>08:00 AM</td>
+                                        <td>Thu gom rác - Tuyến 1</td>
+                                        <td>Nguyễn Văn A</td>
+                                        <td><span class="badge bg-success">Hoàn thành</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:30 AM</td>
+                                        <td>Thu gom rác - Tuyến 2</td>
+                                        <td>Trần Thị B</td>
+                                        <td><span class="badge bg-warning">Đang thực hiện</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10:00 AM</td>
+                                        <td>Bảo trì xe</td>
+                                        <td>Lê Văn C</td>
+                                        <td><span class="badge bg-info">Đang xử lý</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Biểu đồ hoạt động theo tuần
+        const weeklyCtx = document.getElementById('weeklyActivityChart').getContext('2d');
+        new Chart(weeklyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'],
+                datasets: [{
+                    label: 'Số chuyến thu gom',
+                    data: [12, 15, 13, 14, 11, 8, 6],
+                    backgroundColor: '#2ecc71'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Số chuyến'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Biểu đồ trạng thái nhân viên
+        const statusCtx = document.getElementById('employeeStatusChart').getContext('2d');
+        new Chart(statusCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Đang làm việc', 'Nghỉ phép', 'Bận'],
+                datasets: [{
+                    data: [35, 5, 5],
+                    backgroundColor: ['#2ecc71', '#e74c3c', '#f1c40f']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

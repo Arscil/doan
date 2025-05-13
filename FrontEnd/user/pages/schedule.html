@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Thu Gom - Người Dùng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../assets/css/user.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="../../assets/logo.png" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">GREEN CITY</span>
+                    <span class="profession">Khách hàng</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="../dashboard.html">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li class="nav-link active">
+                        <a href="schedule.html">
+                            <i class='bx bx-calendar icon'></i>
+                            <span class="text nav-text">Lịch thu gom</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="history.html">
+                            <i class='bx bx-history icon'></i>
+                            <span class="text nav-text">Lịch sử</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="feedback.html">
+                            <i class='bx bx-message-dots icon'></i>
+                            <span class="text nav-text">Phản hồi</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="profile.html">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Tài khoản</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="../../login.html">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Đăng xuất</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="home">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col">
+                    <h1 class="page-title">Lịch Thu Gom</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Thông tin địa điểm</h5>
+                            <div class="mb-3">
+                                <strong>Địa chỉ:</strong>
+                                <p>123 Nguyễn Văn Linh, Quận 7, TP.HCM</p>
+                            </div>
+                            <div class="mb-3">
+                                <strong>Tuyến thu gom:</strong>
+                                <p>Tuyến 1 - Khu vực Quận 7</p>
+                            </div>
+                            <div class="mb-3">
+                                <strong>Thời gian thu gom:</strong>
+                                <p>Thứ 2, 4, 6 hàng tuần</p>
+                                <p>Từ 8:00 - 10:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Lịch thu gom sắp tới</h5>
+                            <div class="upcoming-schedule">
+                                <div class="schedule-item">
+                                    <div class="date">15/03/2024</div>
+                                    <div class="time">08:00 - 10:00</div>
+                                    <div class="status text-success">
+                                        <i class='bx bx-check-circle'></i> Đã xác nhận
+                                    </div>
+                                </div>
+                                <div class="schedule-item">
+                                    <div class="date">17/03/2024</div>
+                                    <div class="time">08:00 - 10:00</div>
+                                    <div class="status text-warning">
+                                        <i class='bx bx-time'></i> Chờ xác nhận
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Detail Modal -->
+    <div class="modal fade" id="scheduleDetailModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chi tiết lịch thu gom</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="schedule-detail">
+                        <div class="mb-3">
+                            <strong>Ngày thu gom:</strong>
+                            <p id="scheduleDate">15/03/2024</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Thời gian:</strong>
+                            <p id="scheduleTime">08:00 - 10:00</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Nhân viên thu gom:</strong>
+                            <p id="staffName">Nguyễn Văn A</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Trạng thái:</strong>
+                            <p id="scheduleStatus" class="text-success">Đã xác nhận</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Ghi chú:</strong>
+                            <p id="scheduleNote">Vui lòng phân loại rác trước khi thu gom</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script>
+        // Sidebar Toggle
+        const body = document.querySelector('body');
+        const sidebar = body.querySelector('nav');
+        const toggle = body.querySelector(".toggle");
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+
+        // Initialize Calendar
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                locale: 'vi',
+                events: [
+                    {
+                        title: 'Thu gom rác',
+                        start: '2024-03-15T08:00:00',
+                        end: '2024-03-15T10:00:00',
+                        color: '#32ca32'
+                    },
+                    {
+                        title: 'Thu gom rác',
+                        start: '2024-03-17T08:00:00',
+                        end: '2024-03-17T10:00:00',
+                        color: '#ffc107'
+                    }
+                ],
+                eventClick: function(info) {
+                    // Show schedule detail modal
+                    var modal = new bootstrap.Modal(document.getElementById('scheduleDetailModal'));
+                    modal.show();
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html> 

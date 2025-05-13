@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Hệ thống Quản lý Thu gom Rác thải</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .brand-section {
+            background-color: #32ca32;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .brand-section img {
+            width: 150px;
+            margin-bottom: 2rem;
+        }
+        .brand-name {
+            color: #ffd700;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .brand-slogan {
+            font-size: 0.9rem;
+        }
+        .login-form {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .login-title {
+            color: #16163a;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .btn-login {
+            background-color: #16163a;
+            color: white;
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+        }
+        .btn-guest {
+            width: 100%;
+            margin-top: 1rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row login-container">
+            <!-- Brand Section -->
+            <div class="col-md-4 brand-section">
+                <img src="assets/logo.png" alt="Logo" class="img-fluid">
+                <div class="brand-name">GREEN CITY</div>
+                <div class="brand-slogan">DỊCH VỤ THU GOM RÁC TẠI NHÀ</div>
+            </div>
+
+            <!-- Login Form Section -->
+            <div class="col-md-8 d-flex align-items-center justify-content-center">
+                <div class="login-form">
+                    <h2 class="login-title">ĐĂNG NHẬP</h2>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Tài khoản</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-login">Đăng nhập</button>
+                        <button type="button" class="btn btn-guest" disabled>
+                            Tiếp tục với tư cách khách hàng
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === '123') {
+                window.location.href = 'admin/dashboard.html';
+            } else if (username === 'user' && password === '123') {
+                window.location.href = 'user/dashboard.html';
+            } else {
+                alert('Sai tài khoản hoặc mật khẩu');
+            }
+        });
+    </script>
+</body>
+</html> 

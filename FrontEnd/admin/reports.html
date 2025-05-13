@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo thống kê - GREEN CITY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="Logo">
+                    <h3>GREEN CITY</h3>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Tổng quan</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="employee.html">
+                        <i class="fas fa-users"></i>
+                        <span>Quản lý nhân viên</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="routes.html">
+                        <i class="fas fa-route"></i>
+                        <span>Quản lý tuyến thu gom</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="schedule.html">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Lịch thu gom</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="assignments.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Phân công công việc</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item active">
+                    <a href="reports.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Báo cáo thống kê</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="settings.html">
+                        <i class="fas fa-cog"></i>
+                        <span>Cài đặt hệ thống</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container-fluid">
+                <!-- Header -->
+                <div class="content-header d-flex justify-content-between align-items-center">
+                    <h1>BÁO CÁO THỐNG KÊ</h1>
+                    <div class="user-info">
+                        <span>Admin</span>
+                        <a href="../login.html" class="btn btn-outline-light ms-3">Đăng xuất</a>
+                    </div>
+                </div>
+
+                <!-- Bộ lọc thời gian -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Từ ngày</label>
+                                <input type="date" class="form-control" value="2024-01-01">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Đến ngày</label>
+                                <input type="date" class="form-control" value="2024-03-31">
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-filter me-2"></i>Lọc dữ liệu
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Thống kê tổng quan -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title text-muted mb-3">Tổng số chuyến thu gom</h6>
+                                <h3 class="mb-0">245</h3>
+                                <small class="text-success">
+                                    <i class="fas fa-arrow-up me-1"></i>12% so với tháng trước
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title text-muted mb-3">Khối lượng rác thu gom</h6>
+                                <h3 class="mb-0">12.5 tấn</h3>
+                                <small class="text-success">
+                                    <i class="fas fa-arrow-up me-1"></i>8% so với tháng trước
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title text-muted mb-3">Tỷ lệ hoàn thành</h6>
+                                <h3 class="mb-0">92%</h3>
+                                <small class="text-success">
+                                    <i class="fas fa-arrow-up me-1"></i>5% so với tháng trước
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title text-muted mb-3">Số khiếu nại</h6>
+                                <h3 class="mb-0">3</h3>
+                                <small class="text-danger">
+                                    <i class="fas fa-arrow-up me-1"></i>1 so với tháng trước
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biểu đồ -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Thống kê khối lượng rác thu gom theo tháng</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="wasteChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Phân loại rác thải</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="wasteTypeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bảng thống kê chi tiết -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title">Thống kê theo tuyến thu gom</h5>
+                        <button class="btn btn-sm btn-primary">
+                            <i class="fas fa-download me-2"></i>Xuất báo cáo
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tuyến thu gom</th>
+                                        <th>Số chuyến</th>
+                                        <th>Khối lượng</th>
+                                        <th>Tỷ lệ đúng giờ</th>
+                                        <th>Đánh giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tuyến 1 - Quận 1</td>
+                                        <td>45</td>
+                                        <td>2.5 tấn</td>
+                                        <td>95%</td>
+                                        <td>
+                                            <div class="rating">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tuyến 2 - Quận 3</td>
+                                        <td>42</td>
+                                        <td>2.3 tấn</td>
+                                        <td>92%</td>
+                                        <td>
+                                            <div class="rating">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="far fa-star text-warning"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tuyến 3 - Quận 5</td>
+                                        <td>38</td>
+                                        <td>2.1 tấn</td>
+                                        <td>88%</td>
+                                        <td>
+                                            <div class="rating">
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="far fa-star text-warning"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Biểu đồ khối lượng rác thu gom
+        const wasteCtx = document.getElementById('wasteChart').getContext('2d');
+        new Chart(wasteCtx, {
+            type: 'line',
+            data: {
+                labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+                datasets: [{
+                    label: 'Khối lượng (tấn)',
+                    data: [10.2, 11.5, 12.5, 11.8, 12.2, 13.1, 12.8, 13.5, 14.2, 13.8, 14.5, 15.0],
+                    borderColor: '#2ecc71',
+                    tension: 0.3,
+                    fill: true,
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Khối lượng (tấn)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Biểu đồ phân loại rác thải
+        const wasteTypeCtx = document.getElementById('wasteTypeChart').getContext('2d');
+        new Chart(wasteTypeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Rác sinh hoạt', 'Rác tái chế', 'Rác nguy hại'],
+                datasets: [{
+                    data: [65, 25, 10],
+                    backgroundColor: ['#2ecc71', '#3498db', '#e74c3c']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 
